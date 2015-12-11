@@ -1,0 +1,11 @@
+class CreateRevisions < ActiveRecord::Migration
+  def change
+    create_table :revisions do |t|
+      t.text :content
+      t.references :user, index: true, foreign_key: true
+      t.references :article, index: true, foreign_key: true
+
+      t.timestamps null: false
+    end
+  end
+end
