@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   root 'home#index'
-  resources :users
+  
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+
+  resources :users, except: [:new]
+
   shallow do
     resources :articles do 
       resources :revisions do 
