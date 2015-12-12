@@ -4,7 +4,8 @@ class RevisionsController < ApplicationController
   # GET /revisions
   # GET /revisions.json
   def index
-    @revisions = Revision.all
+    @article = Article.find(params[:article_id])
+    @revisions = @article.revisions
   end
 
   # GET /revisions/1
@@ -69,6 +70,6 @@ class RevisionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def revision_params
-      params.require(:revision).permit(:content, :user_id, :article_id)
+      params.require(:revision).permit(:content, :user_id, :article_id, :image_url)
     end
 end

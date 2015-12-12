@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+.side.bar {
+  display: inline-block;
+  vertical-align: top;
+  width: 90px;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.side.bar li a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: rgb(255, 255, 0);
+}
+
+.side.bar li a:hover {
+  color: black;
+  background-color: rgb(255, 255, 0);
+}
+
+.bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
