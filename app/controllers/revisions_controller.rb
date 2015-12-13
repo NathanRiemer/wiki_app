@@ -25,16 +25,12 @@ class RevisionsController < ApplicationController
   # POST /revisions
   # POST /revisions.json
   def create
-    @revision = Revision.new(revision_params)
-
-    respond_to do |format|
-      if @revision.save
-        format.html { redirect_to @revision, notice: 'Revision was successfully created.' }
-        format.json { render :show, status: :created, location: @revision }
-      else
-        format.html { render :new }
-        format.json { render json: @revision.errors, status: :unprocessable_entity }
-      end
+    @revision = @article.revisions.build(revision_params)
+    @revision.user = current_user
+    if @revision.save
+      redirect_to @article
+    else
+      redirect_to edit_article_path(@article)
     end
   end
 
