@@ -9,7 +9,18 @@
 </div>
 <%= image_tag(@article.current_image) %>
 
-<%= render_markdown(@article.current_content) %>
+<div class="content">
+  <%= render_markdown(@article.current_content) %>
+</div> <!-- .content -->
+
+<div class="categories">
+<h3>Categories:</h3>
+  <ul>
+    <% @article.categories.each do |category| %>
+      <li><%= link_to category.title, category %></li>
+    <% end %>
+  </ul>
+</div>
 
 <%= creation_info %>
 

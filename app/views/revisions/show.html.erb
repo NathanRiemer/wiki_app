@@ -2,17 +2,15 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @revision.content %>
-</p>
+<h1><%= @article.title %></h1>
+<%= rev_modification_info(@revision) %>
+<div class="ib toc">
+  <h3>Table of Contents:</h3>
+  <%= render_toc_markdown(@revision.content) %>
+</div>
+<%= image_tag(@revision.image_url) %>
 
-<p>
-  <strong>User:</strong>
-  <%= @revision.user %>
-</p>
+<%= render_markdown(@revision.content) %>
 
-<p>
-  <strong>Article:</strong>
-  <%= @revision.article %>
-</p>
+
+<%= link_to 'Back', articles_path %>
