@@ -29,13 +29,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @revision = @article.revisions.build(revision_params)
     @revision.user = current_user
-    category_titles = params[:article][:category_titles].split(",")
-    category_titles.each do |category_title|
-      category_title = category_title.strip
-      category = Category.find_by(title: category_title)
-      category ||= Category.new(title: category_title)
-      @article.categories << category
-    end
+    update_article_categories
 
     respond_to do |format|
       if @article.save
@@ -51,6 +45,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    update_article_categories
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -86,4 +81,14 @@ class ArticlesController < ApplicationController
     def revision_params
       params.require(:revision).permit(:content, :article_id, :image_url)
     end
+
+    def update_article_categories
+    category_titles = params[:article][:category_titles].split(",")
+    category_titles.each do |category_title|
+      category_title = category_title.strip
+      category = Category.find_by(title: category_title)
+      category ||= Category.new(title: category_title)
+      @article.categories << category unless @article.categories.exists?(category)
+    end
+  end
 end

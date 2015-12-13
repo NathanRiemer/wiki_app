@@ -17,7 +17,7 @@
 <h3>Categories:</h3>
   <ul>
     <% @article.categories.each do |category| %>
-      <li><%= link_to category.title, category %></li>
+      <li><%= link_to category.title, category %> <%= link_to "Remove", article_category_path(@article, category), method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% end %>
   </ul>
 </div>

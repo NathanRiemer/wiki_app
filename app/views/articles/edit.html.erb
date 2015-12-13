@@ -20,6 +20,12 @@
     <%= f.text_field :title %>
   </div>
 
+  <div class="field">
+    <label>Add categories: 
+      <%= text_field_tag 'article[category_titles]' %>
+    </label>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
