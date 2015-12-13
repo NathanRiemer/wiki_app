@@ -14,4 +14,12 @@ class Article < ActiveRecord::Base
   def current_image
     current_rev.image_url
   end
+
+  def current_author
+    current_rev.user
+  end
+
+  def first_rev
+    revisions.first
+  end
 end

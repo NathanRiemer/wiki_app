@@ -14,9 +14,14 @@
  *= require_self
  */
 
-.side.bar {
-  display: inline-block;
+.ib,
+.side.bar, 
+.page-content {
   vertical-align: top;
+  display: inline-block;
+}
+
+.side.bar {
   width: 90px;
   background-color: rgba(0, 0, 0, .3);
 }
@@ -37,4 +42,10 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.page-content {
+  width: 80%;
+  background-color: rgba(255, 255, 0, .7);
+  border: 1px solid black;
 }

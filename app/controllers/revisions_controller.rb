@@ -1,10 +1,10 @@
 class RevisionsController < ApplicationController
   before_action :set_revision, only: [:show, :edit, :update, :destroy]
+  before_action :set_article
 
   # GET /revisions
   # GET /revisions.json
   def index
-    @article = Article.find(params[:article_id])
     @revisions = @article.revisions
   end
 
@@ -66,6 +66,10 @@ class RevisionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_revision
       @revision = Revision.find(params[:id])
+    end
+
+    def set_article
+      @article = Article.find(params[:article_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

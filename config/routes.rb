@@ -7,14 +7,15 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
 
-  resources :users, except: [:new]
+  resources :users, except: [:new] do 
+    resources :articles, only: [:index]
+  end
 
-  shallow do
-    resources :articles do 
-      resources :revisions do 
-        resources :comments
-      end
+  resources :articles do 
+    resources :revisions, only: [:index, :create, :show] do 
+      resources :comments, only: [:create, :destroy]
     end
+    # resources :categories, only: [:create, :edit, :destroy]
   end
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.
