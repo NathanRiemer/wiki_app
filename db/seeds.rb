@@ -10,11 +10,9 @@
 User.destroy_all
 
 user1 = User.create({username: "nathanriemer", password: "password", email: "nathan.riemer@gmail.com", is_admin: true, city: "New York", state: "NY", country: "USA"})
-user2 = User.create({username: "someoneelse", password: "password", email: "fake@gmail.com"})
+user2 = User.create({username: "george_lucas", password: "password", email: "fake@gmail.com"})
 
-a1 = Article.create({title: "Dogs"})
-a2 = Article.create({title: "Running"})
-a3 = Article.create(title: "Welcome")
 
-r1 = Revision.create({content: "Dogs are really great", user: user1, article: a1})
-r2 = Revision.create({content: "Dogs are *extremely* great", user: user1, article: a1})
+a1 = Article.create(title: "Welcome")
+
+r1 = Revision.create({content: "Welcome to Nathan Riemer's wiki project", user: user1, article: a1})
