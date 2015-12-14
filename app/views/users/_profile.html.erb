@@ -1,0 +1,17 @@
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
+
+<% if @user.is_admin %>
+  <p>Admin User</p>
+<% end %>
+
+<div class="details">
+  <div class="ib profile">
+    <p>Email: <%= @user.email %></p>
+    <p>First Name: <%= @user.first_name %></p>
+    <p>Last Name: <%= @user.last_name %></p>
+    <p>City: <%= @user.city %></p>
+    <p>State: <%= @user.state %></p>
+    <p>Country: <%= @user.country %></p>
+  </div> <!-- .profile -->
+  <%= image_tag @user.avatar_image_url, class: "ib" %>
+</div> <!-- .details -->

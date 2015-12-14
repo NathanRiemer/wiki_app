@@ -4,7 +4,12 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.order(:title)
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @articles = user.articles.uniq.order(:title)
+    else
+      @articles = Article.all.order(:title)
+    end
   end
 
   # GET /articles/1

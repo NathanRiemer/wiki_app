@@ -5,4 +5,17 @@ class User < ActiveRecord::Base
   has_many :articles, through: :revisions
   validates :username, uniqueness: true
   validates :email, uniqueness: true
+
+  def num_articles
+    articles.uniq.count
+  end
+
+  def num_revisions
+    revisions.count
+  end
+
+  def num_comments
+    comments.count
+  end
+
 end
